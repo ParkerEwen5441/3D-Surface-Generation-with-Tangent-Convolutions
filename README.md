@@ -38,6 +38,20 @@ $ cd Open3D/build/lib/
 $ python
 $ from py3d import *
 ```
+There may be issues with building Open3D. If that is the case, check the following:
+* Open CMakeCache.txt in _Open3D/build_ and make sure PYTHON_EXECUTABLE:FILEPATH and PYTHON_LIBRARY:FILEPATH= point to python3.6 and python3.6m.so respectively
+* Python 3.6 isn't supported by Ubuntu 16.04. You need to recreate the virtual environment after you install the _python3.6-dev_ package
+```shell
+$ sudo add-apt-repository ppa:jonathonf/python-3.6
+$ sudo apt update
+$ sudo apt install python3.6 python3.6-dev
+$ sudo apt remove python3-dev # to ensure the system's Python 3.5 wouldn't interfere
+
+### Create new virtualenv with flag --python=/usr/bin/python3.6
+# In new virtualenv...
+
+$ pip install dlib
+```
 
 ### Run Tangent Convolutions
 Download one of the datasets specified [by their GitHub page](https://github.com/tatarchm/tangent_conv).  <br />
